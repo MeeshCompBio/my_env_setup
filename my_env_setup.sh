@@ -4,7 +4,7 @@ WORKINGDIR=$PWD
 # install zsh
 cd
 echo 'Creating GitHub repo and cloning repos'
-mkdir -p Software
+mkdir -p $WORKINGDIR/Software
 mkdir -p $HOME/.local
 INSTALLATION_PATH="$HOME/.local"
 
@@ -85,8 +85,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/p
 sed -i 's/.*plugins=(g.*/plugins=(git colored-man-pages zsh-syntax-highlighting zsh-autosuggestions)/' ~/.zshrc
 
 # add aliases
-cd $WORKINGDIR
-cat bashrc_aliases.sh >> ~/.zshrc
+cat $WORKINGDIR/bashrc_aliases.sh >> ~/.zshrc
 
 # vim setup
 echo 'Setting up vim'
@@ -94,14 +93,14 @@ curl 'https://vim-bootstrap.com/generate.vim' --data 'langs=python&editor=vim' >
 
 # adding dracula theme
 sed -i "/required by fugitive/i\Plug 'dracula/vim', { 'as': 'dracula' }" ~/.vimrc
-sed "/silent\! colorscheme/c\silent! colorscheme dracula" ~/.vimrc
+sed -i "/silent\! colorscheme/c\silent! colorscheme dracula" ~/.vimrc
 # vim -c PlugInstall command line to install vim plugins, but then again user need to know how to exit it....
 
 # make zsh the default shell
 echo "making zsh the default shell on startup, modifying .bashrc"
-cd
-cat bashrc_mod.sh >> ~/.bashrc
+
+cat $WORKINGDIR/bashrc_mod.sh >> ~/.bashrc
 souce ~/.bashrc
 
 # adding a tmux conf file
-cat tmux_config_options.sh > ~/.tmux.conf
+cat $WORKINGDIR/tmux_config_options.sh > ~/.tmux.conf

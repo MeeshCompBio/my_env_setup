@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+    datascience-notebook:
+        image: jupyter/datascience-notebook
+        volumes:
+            - ./:/home/jovyan
+        environment:
+            GRANT_SUDO: "yes"
+        user: root
+        ports:
+            - 8888:8888
+        container_name: jupyter_notebook

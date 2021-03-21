@@ -1,11 +1,13 @@
 version: '3.7'
 services:
     datascience-notebook:
-        image: jupyter/datascience-notebook
+        image: meesh-jupyter 
         volumes:
             - ./:/home/jovyan
         environment:
             GRANT_SUDO: "yes"
+            JUPYTER_TOKEN: "easy"
+            PASSWORD: "password"
         user: root
         ports:
             - 8888:8888

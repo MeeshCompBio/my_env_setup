@@ -6,8 +6,6 @@ services:
             - ./:/home/jovyan
         environment:
             GRANT_SUDO: "yes"
-            JUPYTER_TOKEN: "easy"
-            PASSWORD: "password"
         user: root
         ports:
             - 8888:8888
